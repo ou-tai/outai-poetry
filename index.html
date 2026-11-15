@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>OUTAI 诗词 · 东方诗词沉浸阅读</title>
+<meta name="description" content="中华古典诗词歌赋沉浸式阅读空间：唐诗、宋诗、宋词、诗经、楚辞、元曲。数据来源于 chinese-poetry（MIT）。">
+<meta name="theme-color" content="#0e1a24">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='38' fill='%23e8dcc3'/%3E%3Ctext x='50' y='66' font-size='44' text-anchor='middle' fill='%230e1a24' font-family='serif'%3E诗%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="moon"></div><div class="mist m1"></div><div class="mist m2"></div>
+<svg class="mountains" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 220 L0 150 L180 60 L320 140 L470 40 L640 150 L800 70 L980 160 L1120 90 L1200 140 L1200 220 Z"/>
+<path class="far" d="M0 220 L0 190 L220 110 L420 180 L620 100 L840 185 L1040 120 L1200 175 L1200 220 Z"/>
+</svg></div>
+
+<header class="topbar">
+  <a class="brand" href="#/">OUTAI <span>诗词</span></a>
+  <nav class="nav" id="nav">
+    <a href="#/" data-route="home">首页</a>
+    <a href="#/browse/tang">唐诗</a>
+    <a href="#/browse/song">宋诗</a>
+    <a href="#/browse/ci">宋词</a>
+    <a href="#/browse/shijing">诗经</a>
+    <a href="#/browse/chuci">楚辞</a>
+    <a href="#/browse/yuanqu">元曲</a>
+    <a href="#/authors">作者</a>
+    <a href="#/favorites">收藏</a>
+    <a href="#/history">历史</a>
+  </nav>
+  <div class="top-actions">
+    <button id="themeToggle" class="icon-btn" type="button" title="切换夜间 / 日间模式" aria-label="切换夜间模式">◐</button>
+    <button id="menuToggle" class="icon-btn menu-btn" type="button" aria-label="打开菜单">☰</button>
+  </div>
+</header>
+
+<div class="searchbar">
+  <form id="searchForm" role="search">
+    <input id="searchInput" type="search" placeholder="搜标题 / 作者 / 正文首句，如：静夜思、李白、床前明月光" aria-label="搜索诗词" autocomplete="off">
+    <select id="searchScope" aria-label="搜索范围">
+      <option value="all">全部文集</option>
+      <option value="tang">唐诗</option>
+      <option value="song">宋诗</option>
+      <option value="ci">宋词</option>
+      <option value="shijing">诗经</option>
+      <option value="chuci">楚辞</option>
+      <option value="yuanqu">元曲</option>
+    </select>
+    <button type="submit">搜索</button>
+  </form>
+</div>
+
+<main id="app" class="app" aria-live="polite">
+  <p class="loading">正在载入山水与诗……</p>
+</main>
+
+<footer class="footer">
+  <p>OUTAI 诗词 · 中华古典诗词歌赋沉浸式阅读空间</p>
+  <p>数据来源：<a href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noopener">chinese-poetry</a>（MIT 许可，Copyright © 2016 JackeyGao），经数据仓库同步后由本站读取；原始数据不含注释、译文与赏析，本站不虚构以上内容。</p>
+  <p>数据仓库：ou-tai/outai-poetry-data · 本站：s.outaidage.xyz</p>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
