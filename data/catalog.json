@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-11-15T14:58:42.815918+00:00",
+  "source": {
+    "repo": "https://github.com/chinese-poetry/chinese-poetry",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2016 JackeyGao（上游 chinese-poetry）",
+    "note": "数据来源于上游 chinese-poetry；本站不修改原始诗词内容，仅做分片索引与派生。运行时网站从数据仓库读取原始分片，不直接请求上游。"
+  },
+  "runtime_data": {
+    "cdn": "https://cdn.jsdelivr.net/gh/ou-tai/outai-poetry-data@main/",
+    "raw_fallback": "https://raw.githubusercontent.com/ou-tai/outai-poetry-data/main/",
+    "data_repo": "ou-tai/outai-poetry-data（默认分支 main）",
+    "note": "原始分片优先走 jsDelivr CDN，失败回退 raw.githubusercontent.com；catalog / daily / authors / search-index 由本站 data/ 直接提供。"
+  },
+  "page_size": 20,
+  "collections": [
+    {
+      "id": "tang",
+      "name": "唐诗",
+      "dynasty": "唐",
+      "kind": "poem",
+      "dir": "全唐诗",
+      "files": [
+        "poet.tang.0.json",
+        "poet.tang.1000.json",
+        "poet.tang.2000.json",
+        "poet.tang.3000.json",
+        "poet.tang.4000.json",
+        "poet.tang.5000.json",
+        "poet.tang.6000.json",
+        "poet.tang.7000.json",
+        "poet.tang.8000.json",
+        "poet.tang.9000.json",
+        "poet.tang.10000.json",
+        "poet.tang.11000.json",
+        "poet.tang.12000.json",
+        "poet.tang.13000.json",
+        "poet.tang.14000.json",
+        "poet.tang.15000.json",
+        "poet.tang.16000.json",
+        "poet.tang.17000.json",
+        "poet.tang.18000.json",
+        "poet.tang.19000.json"
+      ],
+      "indexed_count": 20011,
+      "upstream_files": 58,
+      "upstream_poems_approx": 58000,
+      "note": "全唐诗。字段：author / title / paragraphs / id。"
+    },
+    {
+      "id": "song",
+      "name": "宋诗",
+      "dynasty": "宋",
+      "kind": "poem",
+      "dir": "全唐诗",
+      "files": [
+        "poet.song.0.json",
+        "poet.song.1000.json",
+        "poet.song.2000.json",
+        "poet.song.3000.json",
+        "poet.song.4000.json",
+        "poet.song.5000.json",
+        "poet.song.6000.json",
+        "poet.song.7000.json",
+        "poet.song.8000.json",
+        "poet.song.9000.json",
+        "poet.song.10000.json",
+        "poet.song.11000.json",
+        "poet.song.12000.json",
+        "poet.song.13000.json",
+        "poet.song.14000.json",
+        "poet.song.15000.json",
+        "poet.song.16000.json",
+        "poet.song.17000.json",
+        "poet.song.18000.json",
+        "poet.song.19000.json"
+      ],
+      "indexed_count": 20000,
+      "upstream_files": 255,
+      "upstream_poems_approx": 255000,
+      "note": "全宋诗。字段：author / title / paragraphs / id。"
+    },
+    {
+      "id": "ci",
+      "name": "宋词",
+      "dynasty": "宋",
+      "kind": "ci",
+      "dir": "宋词",
+      "files": [
+        "ci.song.0.json",
+        "ci.song.1000.json",
+        "ci.song.2000.json",
+        "ci.song.3000.json",
+        "ci.song.4000.json",
+        "ci.song.5000.json",
+        "ci.song.6000.json",
+        "ci.song.7000.json",
+        "ci.song.8000.json",
+        "ci.song.9000.json",
+        "ci.song.10000.json",
+        "ci.song.11000.json",
+        "ci.song.12000.json",
+        "ci.song.13000.json",
+        "ci.song.14000.json",
+        "ci.song.15000.json",
+        "ci.song.16000.json",
+        "ci.song.17000.json",
+        "ci.song.18000.json",
+        "ci.song.19000.json"
+      ],
+      "indexed_count": 20000,
+      "upstream_files": 22,
+      "upstream_poems_approx": 21000,
+      "note": "宋词。字段：author / paragraphs / rhythmic（词牌名，无 title）。另有 ci.song.2019y.json 未纳入本次索引。"
+    },
+    {
+      "id": "shijing",
+      "name": "诗经",
+      "dynasty": "先秦",
+      "kind": "shijing",
+      "dir": "诗经",
+      "files": [
+        "shijing.json"
+      ],
+      "indexed_count": 305,
+      "upstream_files": 1,
+      "upstream_poems_approx": 305,
+      "note": "诗经全量 305 篇。字段：title / chapter / section / content。"
+    },
+    {
+      "id": "chuci",
+      "name": "楚辞",
+      "dynasty": "先秦",
+      "kind": "chuci",
+      "dir": "楚辞",
+      "files": [
+        "chuci.json"
+      ],
+      "indexed_count": 65,
+      "upstream_files": 1,
+      "upstream_poems_approx": 65,
+      "note": "楚辞全量 65 篇。字段：title / section / author / content。"
+    },
+    {
+      "id": "yuanqu",
+      "name": "元曲",
+      "dynasty": "元",
+      "kind": "yuanqu",
+      "dir": "元曲",
+      "files": [
+        "yuanqu.json"
+      ],
+      "indexed_count": 11057,
+      "upstream_files": 1,
+      "upstream_poems_approx": 11057,
+      "note": "元曲全量 11057 首。字段：dynasty / author / paragraphs / title。"
+    }
+  ],
+  "notes": [
+    "索引覆盖范围（诚实口径）：诗经、楚辞、元曲为全量；唐诗、宋诗、宋词各取前 20 个分片（每分片约 1000 首），合计约 60000 首已索引；上游唐诗约 58000 首、宋诗约 255000 首、宋词约 21000 首，未索引部分暂不在浏览与搜索范围内。",
+    "如需扩大覆盖：调大 --shards 重新运行本脚本，并确保对应分片已同步到数据仓库 ou-tai/outai-poetry-data。",
+    "原始数据没有注释、译文、赏析；网站只展示数据确实有的字段，不虚构任何注释、译文、作者生平或赏析。",
+    "作者简介仅取自上游 authors.tang.json / authors.song.json / author.song.json 的原文，缺失时留空。"
+  ],
+  "failures": []
+}
