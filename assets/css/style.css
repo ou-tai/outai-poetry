@@ -1,0 +1,154 @@
+/* OUTAI 诗词 — 东方诗意沉浸式设计（B 方案）
+   水墨山水、月色云雾、留白；衬线/书法感字体；动画克制，支持减弱动效。 */
+:root{
+  --bg:#f4efe4; --bg2:#ece4d2; --ink:#22303a; --ink-soft:#4a5a63;
+  --paper:rgba(255,253,247,.88); --paper-solid:#fffdf7;
+  --line:#d8cdb4; --accent:#8a6d3b; --accent2:#2f5d50;
+  --moon:#f2e7c9; --header-bg:rgba(244,239,228,.92);
+  --shadow:0 10px 30px rgba(34,48,58,.12);
+  --radius:14px;
+}
+body.dark{
+  --bg:#0e1a24; --bg2:#12242f; --ink:#e6ddc8; --ink-soft:#b3ad9c;
+  --paper:rgba(20,34,44,.88); --paper-solid:#16242f;
+  --line:#33454f; --accent:#d9b96a; --accent2:#8fc7b0;
+  --moon:#f6ecd2; --header-bg:rgba(14,26,36,.92);
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--ink);
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 55%,var(--bg) 100%);
+  font-family:"Noto Serif SC","Songti SC","STSong",serif;
+  line-height:1.8; -webkit-text-size-adjust:100%;
+}
+a{color:var(--accent2); text-decoration:none}
+a:hover{text-decoration:underline}
+button{font-family:inherit; cursor:pointer}
+input,select{font-family:inherit}
+
+/* 天空：月、雾、远山（纯 CSS + 内联 SVG，零图片请求） */
+.sky{position:fixed; inset:0 0 auto 0; height:46vh; z-index:-1; overflow:hidden; pointer-events:none}
+.moon{
+  position:absolute; top:5vh; right:12vw; width:88px; height:88px; border-radius:50%;
+  background:radial-gradient(circle at 38% 35%, #fffbeF, var(--moon) 60%, #d9c48f);
+  box-shadow:0 0 60px 24px rgba(242,231,201,.45);
+}
+.mist{position:absolute; left:-10%; width:120%; height:70px; border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,.35), transparent 70%);
+  filter:blur(6px)}
+.mist.m1{top:18vh; animation:drift 26s ease-in-out infinite alternate}
+.mist.m2{top:30vh; animation:drift 34s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
+.mountains{position:absolute; bottom:0; left:0; width:100%; height:150px}
+.mountains path{fill:var(--accent2); opacity:.28}
+.mountains path.far{fill:var(--accent2); opacity:.16}
+
+.topbar{
+  position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:16px;
+  padding:10px 20px; background:var(--header-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-family:"Ma Shan Zheng","Noto Serif SC",serif; font-size:26px; letter-spacing:4px; color:var(--ink); white-space:nowrap}
+.brand span{color:var(--accent)}
+.nav{display:flex; flex-wrap:wrap; gap:2px; margin-left:auto}
+.nav a{padding:6px 10px; border-radius:8px; color:var(--ink); font-size:15px}
+.nav a:hover,.nav a.active{background:rgba(138,109,59,.14); text-decoration:none}
+.top-actions{display:flex; gap:8px}
+.icon-btn{border:1px solid var(--line); background:var(--paper-solid); color:var(--ink);
+  border-radius:50%; width:38px; height:38px; font-size:17px}
+.menu-btn{display:none}
+
+.searchbar{max-width:880px; margin:18px auto 0; padding:0 16px}
+.searchbar form{display:flex; gap:8px}
+.searchbar input{flex:1; min-width:0; padding:11px 14px; font-size:16px; color:var(--ink);
+  background:var(--paper-solid); border:1px solid var(--line); border-radius:999px; outline:none}
+.searchbar input:focus{border-color:var(--accent)}
+.searchbar select{padding:0 8px; border:1px solid var(--line); border-radius:999px; background:var(--paper-solid); color:var(--ink)}
+.searchbar button{padding:0 20px; border:none; border-radius:999px; background:var(--accent2); color:#fff; font-size:15px}
+
+.app{max-width:880px; margin:0 auto; padding:24px 16px 40px; min-height:55vh}
+.loading{color:var(--ink-soft); text-align:center; padding:60px 0}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px 24px; margin-bottom:20px}
+.hero{text-align:center; padding:38px 24px 30px}
+.hero h1{font-family:"Ma Shan Zheng","Noto Serif SC",serif; font-size:clamp(34px,7vw,56px); font-weight:400; margin:0 0 6px; letter-spacing:8px}
+.hero .sub{color:var(--ink-soft); letter-spacing:6px; font-size:15px; margin:0 0 18px}
+.hero .verse{font-size:19px; color:var(--accent); margin:0 0 22px}
+.hero-actions{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+.btn{display:inline-block; padding:10px 20px; border-radius:999px; border:1px solid var(--accent);
+  background:transparent; color:var(--ink); font-size:15px; text-decoration:none}
+.btn:hover{text-decoration:none; background:rgba(138,109,59,.12)}
+.btn.primary{background:var(--accent2); border-color:var(--accent2); color:#fff}
+.btn.primary:hover{background:#26493e}
+.btn.small{padding:6px 14px; font-size:14px}
+.btn[disabled]{opacity:.55; cursor:wait}
+
+.section-title{font-family:"Ma Shan Zheng","Noto Serif SC",serif; font-size:26px; letter-spacing:4px; margin:4px 0 14px; border-bottom:1px solid var(--line); padding-bottom:8px}
+.section-title small{font-size:14px; color:var(--ink-soft); letter-spacing:1px; font-family:"Noto Serif SC",serif}
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px}
+.col-card{display:block; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:18px 14px; text-align:center; color:var(--ink)}
+.col-card:hover{text-decoration:none; border-color:var(--accent); transform:translateY(-2px); transition:transform .2s}
+.col-card .n{font-family:"Ma Shan Zheng",serif; font-size:28px; display:block}
+.col-card .c{color:var(--ink-soft); font-size:13px; display:block; margin-top:4px}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{padding:6px 14px; border-radius:999px; border:1px solid var(--line); background:var(--paper-solid); color:var(--ink); font-size:14px}
+.chip:hover{border-color:var(--accent)}
+
+.poem-line{font-size:18px; margin:6px 0}
+.poem-title{font-size:24px; font-weight:600; margin:0}
+.poem-meta{color:var(--ink-soft); font-size:14px; margin:4px 0 14px}
+.poem-meta a{color:var(--accent2)}
+.poem-body{font-size:19px; line-height:2.1; text-align:center; padding:8px 0}
+.poem-body p{margin:8px 0}
+.daily-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.daily-card h3{margin:0 0 4px; font-size:15px; color:var(--accent); letter-spacing:3px}
+.daily-card .t{font-size:20px; font-weight:600}
+.daily-card .a{color:var(--ink-soft); font-size:14px}
+.daily-card .l{font-size:16px; margin:10px 0; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden}
+.list{list-style:none; margin:0; padding:0}
+.list li{border-bottom:1px solid var(--line); padding:13px 4px}
+.list li:last-child{border-bottom:none}
+.list .t{font-size:18px; font-weight:600; color:var(--ink)}
+.list .a{color:var(--ink-soft); font-size:14px; margin-left:8px}
+.list .l{color:var(--ink-soft); font-size:15px; margin-top:2px}
+.list a:hover{text-decoration:none}
+.list a:hover .t{text-decoration:underline}
+.pager{display:flex; gap:10px; align-items:center; justify-content:center; margin:20px 0 4px; flex-wrap:wrap}
+.pager .info{color:var(--ink-soft); font-size:14px}
+.toolbar{display:flex; gap:8px; flex-wrap:wrap; margin:14px 0}
+.note{color:var(--ink-soft); font-size:14px}
+.small{font-size:13px; color:var(--ink-soft)}
+.error-box{background:var(--paper); border:1px solid #b3543f; border-radius:var(--radius); padding:20px; margin:20px 0}
+.error-box h3{margin-top:0; color:#b3543f}
+.kv{font-size:14px; color:var(--ink-soft)}
+.vertical-note{writing-mode:vertical-rl; letter-spacing:6px; color:var(--accent); font-family:"Ma Shan Zheng",serif; font-size:20px}
+.reader{max-width:680px; margin:0 auto}
+.reader .poem-body{font-size:21px}
+body.reading .topbar, body.reading .searchbar, body.reading .footer{display:none}
+body.reading .app{max-width:760px}
+.progress{height:4px; background:var(--line); border-radius:4px; overflow:hidden; margin:10px 0}
+.progress > div{height:100%; background:var(--accent2); width:0}
+.author-desc{white-space:pre-wrap; font-size:15px; color:var(--ink-soft); max-height:220px; overflow:auto; border-top:1px dashed var(--line); padding-top:10px}
+.toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); background:#22303a; color:#f4efe4;
+  padding:10px 18px; border-radius:999px; font-size:14px; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; z-index:50; max-width:90vw; text-align:center}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+.footer{max-width:880px; margin:0 auto; padding:20px 16px 40px; color:var(--ink-soft); font-size:13px; border-top:1px solid var(--line)}
+.footer p{margin:4px 0}
+.empty{text-align:center; color:var(--ink-soft); padding:40px 0}
+
+@media (max-width:720px){
+  .nav{display:none; position:absolute; top:58px; right:12px; flex-direction:column; background:var(--paper-solid);
+    border:1px solid var(--line); border-radius:12px; padding:8px; box-shadow:var(--shadow)}
+  .nav.open{display:flex}
+  .menu-btn{display:block}
+  .daily-grid{grid-template-columns:1fr}
+  .searchbar select{display:none}
+  .hero h1{letter-spacing:5px}
+  .poem-body{font-size:18px}
+  .reader .poem-body{font-size:19px}
+  .moon{width:64px; height:64px; right:8vw}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+}
